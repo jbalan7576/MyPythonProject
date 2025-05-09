@@ -16,7 +16,7 @@ jobs:
           # Download and install the Lacework CLI using a shell script 
           curl https://raw.githubusercontent.com/lacework/go-sdk/main/cli/install.sh | bash 
           # Configure the Lacework CLI with account, API key, and secret from GitHub secrets 
-          lacework configure -a 919051.lacework.net -k "9190517C_72E50786146BDF63D68822E054535AA11EDB9990039A509" -s "_93341d1e8130a593500b0693caabbe54" --noninteractive
+          lacework configure -a ${{ secrets.LW_ACCOUNT }}.lacework.net -k ${{ secrets.LW_API_KEY }} -s ${{ secrets.LW_API_SECRET }} --noninteractive 
           # Install the Software Composition Analysis (SCA) component 
           lacework component install sca 
 
@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v4  # Use the checkout action to pull the source branch code 
         with: 
           ref: ${{ github.event.pull_request.head.ref }}  # Reference the source branch of the pull request 
-          token: "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"  # Use the GitHub token for authentication 
+          token: ${{ secrets.GH_TOKEN }}  # Use the GitHub token for authentication 
 
       # Step 3: Run the Lacework SCA scan on the source branch and save the output 
       - name: Run Lacework SCA Scan on Source Branch 
@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v4  # Use the checkout action to pull the target branch code 
         with: 
           ref: ${{ github.event.pull_request.base.ref }}  # Reference the target branch of the pull request 
-          token: "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"  # Use the GitHub token for authentication 
+          token: ${{ secrets.GH_TOKEN }}  # Use the GitHub token for authentication 
 
       # Step 5: Run the Lacework SCA scan on the target branch and save the output 
       - name: Run Lacework SCA Scan on Target Branch 
