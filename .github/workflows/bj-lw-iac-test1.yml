@@ -10,12 +10,6 @@ jobs:
     runs-on: ubuntu-latest  # The job runs on the latest Ubuntu environment 
 
     steps: 
-      # Preping Step
-      - name: Checkout source branch 
-        run: |
-          git config user.name "ftntcloud1"
-          git config user.email "bjftntcloud1@gmail.com"
-          
       # Step 1: Install the Lacework CLI and SCA component 
       - name: Install Lacework CLI 
         run: | 
@@ -25,7 +19,13 @@ jobs:
           lacework configure -a ${{ secrets.LW_ACCOUNT }}.lacework.net -k ${{ secrets.LW_API_KEY }} -s ${{ secrets.LW_API_SECRET }} --noninteractive 
           # Install the Software Composition Analysis (SCA) component 
           lacework component install sca 
-
+      # Preping Step
+      - name: Checkout source branch 
+        run: |
+          git --version
+          git config user.name "ftntcloud1"
+          git config user.email "bjftntcloud1@gmail.com"
+          
       # Step 2: Check out the source branch (head of the pull request) 
       - name: Checkout source branch 
         uses: actions/checkout@v4  # Use the checkout action to pull the source branch code 
