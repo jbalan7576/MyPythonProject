@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4  # Use the checkout action to pull the source branch code 
         with: 
           ref: ${{ github.event.pull_request.head.ref }}  # Reference the source branch of the pull request 
-          token: "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"  # Use the GitHub token for authentication 
+          token: "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"  # Use the GitHub token for authentication 
 
       # Step 3: Run the Lacework SCA scan on the source branch and save the output 
       - name: Run Lacework SCA Scan on Source Branch 
