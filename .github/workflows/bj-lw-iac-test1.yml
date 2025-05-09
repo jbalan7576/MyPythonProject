@@ -1,7 +1,9 @@
 name: Lacework SCA/SAST Pull Request 
 
 on: 
-  workflow_dispatch: 
+  pull_request: 
+    branches: 
+      - main  # Specify the target branch for the pull request trigger  
   
 jobs: 
   build: 
