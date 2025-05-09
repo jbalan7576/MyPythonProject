@@ -16,8 +16,6 @@ jobs:
           # Download and install the Lacework CLI using a shell script 
           curl https://raw.githubusercontent.com/lacework/go-sdk/main/cli/install.sh | bash 
           # Configure the Lacework CLI with account, API key, and secret from GitHub secrets 
-          run echo $secrets.LW_ACCOUNT
-          # lacework configure -a ${{ secrets.LW_ACCOUNT }}.lacework.net -k ${{ secrets.LW_API_KEY }} -s ${{ secrets.LW_API_SECRET }} --noninteractive 
           lacework configure -a 919051.lacework.net -k "9190517C_72E50786146BDF63D68822E054535AA11EDB9990039A509" -s "_93341d1e8130a593500b0693caabbe54" --noninteractive
           # Install the Software Composition Analysis (SCA) component 
           lacework component install sca 
