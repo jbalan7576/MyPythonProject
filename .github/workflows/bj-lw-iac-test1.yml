@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest  # The job runs on the latest Ubuntu environment 
 
     steps: 
+      # Preping Step
+      - name: Checkout source branch 
+        run: |
+          git config user.name "ftntcloud1"
+          git config user.email "bjftntcloud1@gmail.com"
+          
       # Step 1: Install the Lacework CLI and SCA component 
       - name: Install Lacework CLI 
         run: | 
@@ -31,7 +37,13 @@ jobs:
       - name: Run Lacework SCA Scan on Source Branch 
         run: lacework sca scan ./ -f sarif -o /tmp/lacework-scan-source.json 
         # Scan the source branch code, output in SARIF format, and save to /tmp/lacework-scan-source.json 
-
+        
+      # Preping Step
+      - name: Checkout source branch 
+        run: |
+          git config user.name "jbalan7576"
+          git config user.email "jbalan7576@gmail.com"
+          
       # Step 4: Check out the target branch of the pull request 
       - name: Checkout target branch 
         uses: actions/checkout@v4  # Use the checkout action to pull the target branch code 
