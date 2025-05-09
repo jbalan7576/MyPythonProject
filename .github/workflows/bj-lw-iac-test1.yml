@@ -3,7 +3,7 @@ name: Lacework SCA/SAST Pull Request
 on: 
   pull_request: 
     branches: 
-      - main  # Specify the target branch for the pull request trigger  
+      - master  # Specify the target branch for the pull request trigger  
   
 jobs: 
   build: 
